@@ -52,9 +52,9 @@ function Cart() {
                     </div>
                     <div className="quantity-controls-container">
                         <div className="quantity-controls">
-                        <button className="qbtn-minus" onClick={() => updateQuantity(item.id, -1)} >-</button>
+                        <button className="qbtn-minus" onClick={() => updateQuantity(item.id, -1)} ><svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-minus"><path d="M5 12h14"/></svg></button>
                         <span>{item.quantity}</span>
-                        <button className="qbtn-plus" onClick={() => updateQuantity(item.id, 1)}>+</button>
+                        <button className="qbtn-plus" onClick={() => updateQuantity(item.id, 1)}> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
                         </div>
                     </div>
                     </div>

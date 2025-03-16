@@ -57,19 +57,22 @@
   
   .quantity-controls button {
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 8px;
     cursor: pointer;
     transition: 0.3s;
     font-size: 0.8vw;
+    transform: scale(0.9);
   }
   
   .qbtn-minus {
     background: linear-gradient(90deg, rgba(22, 26, 66, 1) 0%, rgba(29, 29, 29, 1) 0%, rgba(7, 16, 38, 1) 38%, rgba(5, 51, 26, 1) 65%, rgba(5, 61, 23, 1) 76%, rgba(4, 70, 20, 1) 81%, rgba(4, 71, 20, 1) 87%, rgba(4, 72, 20, 1) 92%, rgba(4, 72, 20, 1) 100%, rgba(3, 91, 14, 1) 100%, rgba(3, 96, 12, 1) 100%, rgba(0, 128, 1, 1) 100%);    
     color: white;
     border: none;
-    padding: 5px 20px;
-    border-radius: 5px;
+    padding: 5px;
+    border-radius: 50%;
     cursor: pointer;
   }
   
@@ -77,8 +80,8 @@
     background: linear-gradient(270deg, rgba(22, 26, 66, 1) 0%, rgba(29, 29, 29, 1) 0%, rgba(7, 16, 38, 1) 38%, rgba(5, 51, 26, 1) 65%, rgba(5, 61, 23, 1) 76%, rgba(4, 70, 20, 1) 81%, rgba(4, 71, 20, 1) 87%, rgba(4, 72, 20, 1) 92%, rgba(4, 72, 20, 1) 100%, rgba(3, 91, 14, 1) 100%, rgba(3, 96, 12, 1) 100%, rgba(0, 128, 1, 1) 100%);    
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 5px;
+    border-radius: 50%;
     cursor: pointer;
   }
 
