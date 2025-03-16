@@ -3,7 +3,7 @@ import './App.css';
 import {Routes,Route} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Register from "./pages/Register/Register"
-import Login from "./pages/Login/Login"
+import Login from "./pages/login/login"
 import Home from "./pages/Home/Home"
 import Cart from "./pages/cart/Cart"
 import { useSelector } from 'react-redux';
