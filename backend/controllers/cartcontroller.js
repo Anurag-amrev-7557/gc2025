@@ -2,32 +2,50 @@ import Cart from "../models/Cart.js";
 import Product from "../models/Product.js";
 
 
-const addToCart = async (req, res) => {
-    try{
-        const {userId,productId,quantity} = req.body;
-        console.log(userId,productId,quantity);
-        if(!userId || !productId || quantity<=0) return res.status(400).json({success:false,message:"Invalid request"});
-        const product = await Product.findById(productId);
-        if(!product) return res.status(404).json({success:false,message:"Product not found"});
+import mongoose from "mongoose"; 
 
-        const cart = await Cart.findOne({userId});
-        if(!cart){
-            cart=new Cart({userId,items:[]});
+const addToCart = async (req, res) => {
+    try {
+        const { userId, productId, quantity } = req.body;
+        console.log(req.body);
+
+        if (!mongoose.Types.ObjectId.isValid(userId) || !mongoose.Types.ObjectId.isValid(productId)) {
+            return res.status(400).json({ success: false, message: "Invalid userId or productId" });
         }
-        const findindex=cart.items.findIndex(item=>item.productId.toString()===productId.toString());
-        if(findindex !== -1){
-            cart.items.push({productId,quantity});
+
+        const parsedQuantity = Number(quantity);
+        if (!userId || !productId || parsedQuantity <= 0 || isNaN(parsedQuantity)) {
+            return res.status(400).json({ success: false, message: "Invalid request" });
         }
-        else{
-            cart.items[findindex].quantity+=quantity;
+
+        const product = await Product.findById(productId);
+        if (!product) {
+            return res.status(404).json({ success: false, message: "Product not found" });
         }
+
+        let cart = await Cart.findOne({ userId });
+
+        if (!cart) {
+            cart = new Cart({ userId, items: [] });
+        }
+
+        const findIndex = cart.items.findIndex(item => item.productId.toString() === productId.toString());
+
+        if (findIndex === -1) {
+            cart.items.push({ productId, quantity: parsedQuantity });  // ✅ Store as a number
+        } else {
+            cart.items[findIndex].quantity += parsedQuantity;  // ✅ Now addition works correctly
+        }
+
         await cart.save();
-        res.status(200).json({success:true,message:"Product added to cart",cart});
+        res.status(200).json({ success: true, message: "Product added to cart", cart });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: error.message });
     }
-    catch(error){
-        res.status(500).json({success:false,message:error.message});
-    }
-}
+};
+
+
 const getCart = async (req, res) => {
     try{
         const {userId} = req.params;
