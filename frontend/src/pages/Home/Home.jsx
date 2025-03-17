@@ -43,23 +43,27 @@ function Home() {
 
 
   const cart=useSelector((state)=>state.cart);
-  const userId=useSelector((state)=>state.userId);
-  console.log(userId);
+  const userId=useSelector((state)=>state.userId.userId);
+  console.log(cart);
   const q=1;
 
-  let [totalnumberofitems,settotalnumberofitems]=useState(0);
+  
   useEffect(()=>{
     dispatch(asyncgetCart(userId));    
   },[userId])
 
+
+
+
+  let [totalnumberofitems,settotalnumberofitems]=useState(0);
   useEffect(() => {
-    if (Array.isArray(cart)) {
-      let total = cart.reduce((acc, item) => acc + item.quantity, 0);
+    if (Array.isArray(cart.cart)) {
+      let total = cart.cart.reduce((acc, item) => acc + item.quantity, 0);
       settotalnumberofitems(total);
       dispatch(setTotalNumberOfItems(total));
       localStorage.setItem('totalNumberOfItems', total);
     }
-  }, [cart]);
+  }, [cart]);  
 
   const handleAddToCart=(userId,productId,quantity)=>{
     dispatch(asyncaddToCart(userId,productId,quantity));
@@ -68,16 +72,18 @@ function Home() {
     dispatch(setTotalNumberOfItems(totalnumberofitems));
     localStorage.setItem('totalNumberOfItems', totalnumberofitems);
   }
+  const handlebuynow=()=>{
 
+  }
   
 
 
   return (
     <div>
-        <Navbar/>  
+        <Navbar totalnumberofitems={totalnumberofitems} userId={userId} />  
         <div className="products">
             {products.data && products.data.map((product,idx)=>(
-                <ProductCard key={idx} name={product.name} price={product.price} quantity={product.quantity} image={product.imageUrl[0]} handleAddToCart={handleAddToCart} userId={userId} />
+                <ProductCard key={idx} productId={product._id} name={product.name} price={product.price} quantity={product.quantity} image={product.imageUrl[0]} handleAddToCart={handleAddToCart} userId={userId} handlebuynow={handlebuynow} />
             ))}
         </div>
         

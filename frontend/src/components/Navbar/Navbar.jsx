@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useSelector,useDispatch } from 'react-redux';
 import { setToken } from '../../store/slices/tokenSlice';
 
-function Navbar() {
+function Navbar({totalnumberofitems,userId}) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const token = useSelector((state)=>state.token);
@@ -44,9 +44,9 @@ function Navbar() {
     return (
         <div>
             <div id="navmain">
-                <a id="navleft" onClick={()=>navigate("/")}>
+                <div id="navleft">
                     <img src="/Images/navbar/1.png" alt="logo" />
-                </a>
+                </div>
                 <div id="navright">
                     <div id="nrl" className={isScrolled ? 'expanded' : ''}>
                         <form onSubmit={handleSearch} className="search-container">
@@ -83,10 +83,10 @@ function Navbar() {
         
         </div>
         </NavLink>
-        <NavLink to={`/cart`}style={{ textDecoration: "none",color:"whitesmoke"}}>
+        <NavLink to={`/cart/${userId}`}style={{ textDecoration: "none",color:"whitesmoke"}}>
         <div id="navr-r" >
             <div id="nrrtext"><i className="ri-shopping-bag-4-fill"></i>&nbsp;Cart&nbsp;
-        <div id="cartcircle" style={{ background: "whitesmoke",color:"black",borderRadius:"6px",padding:"1.2px"}}>15</div></div>
+        <div id="cartcircle" style={{ background: "whitesmoke",color:"black",borderRadius:"6px",padding:"1.2px"}}>{totalnumberofitems}</div></div>
         
         </div>
         </NavLink>

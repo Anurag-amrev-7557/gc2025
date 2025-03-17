@@ -9,6 +9,11 @@
     justify-content: space-between;
     padding: 0 1.5vw;
     font-family: xx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 #navleft{
@@ -16,11 +21,10 @@
     height: 100%;
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
 #navleft img {
-    height: 20vw;
+    height: 23vw;
     width: auto;
     object-fit: contain;
 }
@@ -50,6 +54,10 @@
     font-size: 1.5vw;
     cursor: pointer;
     transition: color 0.3s ease;
+}
+
+#nrl i:hover {
+    color: #04C800;
 }
 
 #nrr {
@@ -86,7 +94,7 @@
     align-items: center;
     gap: 0.5vw;
     color: whitesmoke;
-    font-size: 1.2vw;
+    font-size: 1.39vw;
     cursor: pointer;
     text-decoration: none;
     position: relative;
@@ -113,7 +121,7 @@
     align-items: center;    
 }
 #cartcircle{
-    height: 1.25vw;
+    height: 1.5vw;
     width: 1.5vw;
     border-radius: 50%;
     display: flex;
@@ -224,8 +232,8 @@
 .search-container {
     display: flex;
     align-items: center;
-    width: 30vw;
-    height:1.75vw;
+    width: 28vw;
+    height:3.75vw;
     transition: all 0.3s ease;
     position: relative;
     transform-origin: center;
@@ -239,7 +247,7 @@
 
 .search-input {
     width: 100%;
-    height: 2.3vw;
+    height: 3.75vw;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4vw;
@@ -249,7 +257,6 @@
     outline: none;
     transition: all 0.3s ease;
     font-family: xx;
-    margin-left: -2vw;
 }
 
 .search-input::placeholder {
@@ -270,11 +277,11 @@
 .search-button {
     background: none;
     border: none;
-    padding: 3vw 3vw;
+    padding: 0.5vw 1vw;
     cursor: pointer;
     position: absolute;
-    right: -2vw;
-    top: 49%;
+    right: 0.5vw;
+    top: 50%;
     transform: translateY(-50%);
     z-index: 2;
 }
@@ -283,6 +290,10 @@
     color: whitesmoke;
     font-size: 0.9vw;
     transition: color 0.3s ease;
+}
+
+.search-button:hover i {
+    color: #04C800;
 }
 
 #cartcount {

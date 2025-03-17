@@ -2,7 +2,7 @@ import React, {useState,useEffect,useRef} from 'react'
 import './Product.css'
 
 
-function Product({name,price,quantity,image}) {
+function Product({name,price,quantity,image,handleAddToCart,userId,handlebuynow,productId}) {
   return (
     <div id="productmain">
       <div id="producttop">
@@ -16,8 +16,8 @@ function Product({name,price,quantity,image}) {
           <div id="price">₹ {price}</div>
         </div>
         <div id="pb4">
-          <button id="addtocart">Add to Cart</button>
-          <button id="buynow">Buy Now</button>
+          <button id="addtocart" onClick={()=>handleAddToCart(userId,productId,1)}>Add to Cart</button>
+          <button id="buynow" onClick={handlebuynow}>Buy Now</button>
         </div>
       </div>
     </div>

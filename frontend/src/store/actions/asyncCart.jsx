@@ -7,7 +7,7 @@ export const asyncaddToCart = (userId,productId,quantity) => async (dispatch,get
     const backendUrl = import.meta.env.VITE_BACKEND;
     const token=localStorage.getItem("token");
 
-    console.log("productID=",productId," quantity=",quantity," userId=",userId);
+    console.log("productID="+ productId, "quantity="+ quantity, "userId="+userId);
     try{
         const response=await axios.post(`${backendUrl}/api/cart/addtocart`,{userId,productId,quantity});
         console.log(response);
@@ -23,7 +23,7 @@ export const asyncgetCart = (userId) => async (dispatch,getState) => {
     const token=localStorage.getItem("token");
     try{
         const response=await axios.get(`${backendUrl}/api/cart/getcart/${userId}`);
-        console.log(response);
+        
         dispatch(getCart(response.data.cart.items));
         localStorage.setItem("cart",(response.data.cart.items));        
     }
@@ -65,8 +65,8 @@ export const asyncupdateCart = (userId,productId,quantity) => async (dispatch,ge
     try{
         const response=await axios.put(`${backendUrl}/api/cart/updatecart`,{userId,productId,quantity});
         dispatch(updateCart(response.data.cart));
-        dispatch(asyncgetCart(userId));
-        console.log(response.data.cart);
+        dispatch(asyncgetCart(userId));        
+        localStorage.setItem("cart",response.data.cart);
     }
     catch(error){
         console.error(error);
